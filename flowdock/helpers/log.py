@@ -20,5 +20,5 @@ class FlowdockTeamInboxLoggingHandler(Handler):
 		self.api.post(self.source, self.from_address, subject, content, self.from_name)
 
 	def format(self, record):
-		record.msg = "<p>%s</p>" % record.getMessage()
+		record.msg = "<p>%s</p>" % record.msg
 		return super(FlowdockTeamInboxLoggingHandler, self).format(record)
