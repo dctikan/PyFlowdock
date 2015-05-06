@@ -1,6 +1,7 @@
 # coding: utf-8
 import requests
 from re import match, IGNORECASE
+import six
 
 PUSH_TEAM_INBOX_API_URL = "https://api.flowdock.com/v1/messages/team_inbox/%s"
 PUSH_CHAT_API_URL = "https://api.flowdock.com/v1/messages/chat/%s"
@@ -20,7 +21,7 @@ class PushAPI(object):
 		return "%s(%s) instance at %s" % (self.__class__.__name__, self.flow_api_token, hex(id(self)))
 
 	def post(self, data):
-		data = dict((k, v) for k, v in data.iteritems() if k != 'self' and v is not None)
+		data = dict((k, v) for k, v in six.iteritems(data) if k != 'self' and v is not None)
 		response = requests.post(self.api_url, data=data)
 		if not response.ok:
 			response.raise_for_status()

@@ -12,7 +12,7 @@ setup(
 		'flowdock': 'flowdock'
 	},
 	scripts=[],
-	install_requires=['requests'],
+	install_requires=['requests', 'six'],
 	package_data={
 		'': [],
 	},

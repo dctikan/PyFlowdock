@@ -1,6 +1,7 @@
 # coding: utf-8
 import json
 import requests
+import six
 
 STREAMING_API_URL = 'https://stream.flowdock.com/flows'
 DEFAULT_CONTENT_TYPE = 'application/json'
@@ -43,7 +44,7 @@ class StreamingAPI(object):
 		return self.connection
 
 	def fetch(self, flows, active=None, plain=False):
-		assert isinstance(flows, (list, basestring)), 'The `flows` argument must be string or list instance.'
+		assert isinstance(flows, (list, six.string_types)), 'The `flows` argument must be string or list instance.'
 		assert active in self.ALLOWED_STATUSES, 'The `active` argument must be in %s.' % str(self.ALLOWED_STATUSES)
 		self.flows = flows
 		self.active = active
